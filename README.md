@@ -1,5 +1,6 @@
 
 # Single Page Apps
+This repository contains some basic examples of strategies for building JavaScript applications.
 
 ## Passing data to another page
 
