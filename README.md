@@ -1,8 +1,8 @@
 
-# Single Page Apps
+# JavaScript Application Architectures
 This repository contains some basic examples of strategies for building JavaScript applications.
 
-## Passing data to another page
+## Multi-page Apps - Passing data to another page
 
 ### Using the query string
 The example here is *passing-data-querystring*.
@@ -92,7 +92,7 @@ The example here is *passing-data-local-storage*.
     ```
 * In *details.html* retrieve the selected country from web storage and display the details e.g.
     ```javascript
-        var country = JSON.parse(sessionStorage.getItem("country"));
+        let country = JSON.parse(sessionStorage.getItem("country"));
     ```
 
 ## Single Page Apps
