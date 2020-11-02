@@ -4,7 +4,7 @@ This repository contains some basic examples of strategies for building JavaScri
   * Passing data using web storage
   * A simple Single Page App (SPA)
 
-Run the different examples and explore the code to see how they are working. Then try the following to test your understanding:
+Run the different examples (remember they need to be on a web server) and explore the code to see how they are working. Then try the following to test your understanding:
 
 * Can you make changes to the JSON file(s)
   * Add another property e.g. *continent* for each country.
@@ -23,7 +23,7 @@ Run the different examples and explore the code to see how they are working. The
 ### Using the query string
 The example here is *passing-data-querystring*.
 
-* On page 1 make an ajax request to load a list of countries stored as JSON
+* On page 1 an ajax request loads a list of countries stored as JSON
     ```javascript
         [
             {
@@ -44,18 +44,17 @@ The example here is *passing-data-querystring*.
             }
         ]
     ```
-* Make the name of each country into a hyperlink e.g.
+* The name of each country is made into a hyperlink e.g.
 ```html
 <a href="details.html?id=3">Germany</a>
 ```
-* On page 2 (details.html) get hold of the id value from the query string
-    - This can be done using URLSearchParams
+* On page 2 (details.html) the id value from the query string is used to make another Ajax request.
     ```javascript
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     ajax("data/country"+id+".json",populateContent); //request a JSON file e.g. country3.json
     ```
-* Make an Ajax request for the full details for the country. Each countries details are stored as a separate JSON files, e.g. *country3.json*.
+* Each countries details are stored as a separate JSON files, e.g. *country3.json*.
 ```javascript
     {
         "id":3,
