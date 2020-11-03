@@ -12,10 +12,10 @@ Run the different examples (remember they need to be on a web server) and explor
   * It doesn't matter which example you use to do this.
 
 * Can you use the SWAPI API that we used last week - https://www.swapi.tech/ to load the data instead of hard-coded JSON files.
-  * You could use the web storage example and pass the URL of an species instead of the id number of a country. e.g.  https://www.swapi.tech/api/species for the first request, and then requests for specific species on the details page e.g. https://www.swapi.tech/api/species/3.
+  * You could use the web storage example and pass the URL of a species instead of the id number of a country. e.g.  https://www.swapi.tech/api/species for the first request, and then requests for specific species on the details page e.g. https://www.swapi.tech/api/species/3.
   * Alternatively you could use the simple SPA example and just make a single request.
 
-* Can you use the history API with the SPA example so that the browsers back and forward buttons work.
+* Can you use the history API with the SPA example so that the browser's back and forward buttons work.
 
 
 ## Multi-page Apps - Passing Data to Another Page
@@ -84,13 +84,43 @@ ajax("data/country"+id+".json",populateContent); //request a JSON file e.g. coun
 
 The example here is *simple-spa*.
 
-A closure is used to associate each hyperlink with data about a country.
-
-There are two div elements, *list* and *details*. We use CSS to hide/show the divs e.g.
+This time there is a single JSON file containing all the data
 
 ```javascript
-listDiv.classList.remove("hide");
-detailsDiv.classList.add("hide");
+[
+	{
+		"id":1,
+		"name":"England",
+		"capital":"London",
+		"population":61000000
+	},
+  ...
+```
+
+There are two div elements, *list* and *details*.
+
+The list of countries is loaded into the *list* div. A closure is used to associate each hyperlink with data about a country.
+
+```javascript
+function createHandler(country)
+{
+	//this function uses a closure to associate data with a function
+	return function(){
+		titleEl.textContent = country.name;
+		capitalEl.textContent = country.capital;
+		populationEl.textContent = country.population;
+		listDiv.classList.add("hide");
+		detailsDiv.classList.remove("hide");
+	}
+}
+```
+When one of the countries is selected.
+The country's details are displayed in the *details* div element.
+We use CSS to hide/show the divs e.g.
+
+```javascript
+listDiv.classList.add("hide");
+detailsDiv.classList.remove("hide");
 ```
 
 ## Closures
