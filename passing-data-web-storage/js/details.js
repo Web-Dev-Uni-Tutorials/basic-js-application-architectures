@@ -18,9 +18,9 @@ function populateContent(singleSpecies)
 }
 
 function init(){
-	//get the chosen country's id from session storage
+	//get the chosen species URL from session storage
 	const url = sessionStorage.getItem("url");
-	ajax(url,populateContent); //request a JSON file e.g. country3.json
+	ajax(url,populateContent); //make another Ajax request
 }
 
 
