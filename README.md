@@ -18,9 +18,9 @@ Run the different examples (remember they need to be on a web server) and explor
 * Can you use the history API with the SPA example so that the browsers back and forward buttons work.
 
 
-## Multi-page Apps - Passing data to another page
+## Multi-page Apps - Passing Data to Another Page
 
-### Using the query string
+### Using the Query String
 The example here is *passing-data-querystring*.
 
 * On page 1 an ajax request loads a list of countries stored as JSON
@@ -64,7 +64,7 @@ The example here is *passing-data-querystring*.
     }
 ```
 
-### Using web storage
+### Using Web Storage
 
 The example here is *passing-data-web-storage*.
 
@@ -82,8 +82,6 @@ ajax("data/country"+id+".json",populateContent); //request a JSON file e.g. coun
 
 ## Single Page Apps
 
-### A simple example
-
 The example here is *simple-spa*.
 
 A closure is used to associate each hyperlink with data about a country.
@@ -94,3 +92,6 @@ There are two div elements, *list* and *details*. We use CSS to hide/show the di
 listDiv.classList.remove("hide");
 detailsDiv.classList.add("hide");
 ```
+
+## Closures
+Two of these examples *passing-data-web-storage* and *simple-spa* make use of a closure to associate data with a dynamically generated hyperlink. An explanation of closures can be found here https://github.com/CHT2531/functional-programming/blob/master/notes.md#closures .
