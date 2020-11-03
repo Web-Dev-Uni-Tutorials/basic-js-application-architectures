@@ -7,20 +7,20 @@ function ajax(url,callback)
 	});
 } //end of ajax()
 
-function populateContent(country)
+function populateContent(singleSpecies)
 {
-	const titleEl=document.getElementById("title");
-	const capitalEl=document.getElementById("capital");
-	const populationEl=document.getElementById("population");
-	titleEl.textContent = country.name;
-	capitalEl.textContent = country.capital;
-	populationEl.textContent = country.population;
+	console.log(singleSpecies);
+	const nameEl=document.getElementById("name");
+	const lifespanEl=document.getElementById("lifespan");
+	nameEl.textContent = `Name:${singleSpecies.name}`;
+	lifespanEl.textContent = `Lifespan:${singleSpecies.average_lifespan}`;
+
 }
 
 function init(){
 	//get the chosen country's id from session storage
-	const id = sessionStorage.getItem("id");
-	ajax("data/country"+id+".json",populateContent); //request a JSON file e.g. country3.json
+	const url = sessionStorage.getItem("url");
+	ajax(url,populateContent); //request a JSON file e.g. country3.json
 }
 
 

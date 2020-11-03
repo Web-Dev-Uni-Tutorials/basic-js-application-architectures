@@ -7,32 +7,34 @@ function ajax(url,callback)
 	});
 } //end of ajax()
 
-function createHandler(country)
+function createHandler(singleSpecies)
 {
 	//this function uses a closure to associate data with a hyperlink
 	return function(){
-		sessionStorage.setItem("id",country.id);
+		sessionStorage.setItem("url",singleSpecies.url);
 	}
 }
 
-function populateList(countries)
+function populateList(json)
 {
-	const countriesFragment = document.createDocumentFragment();
-	countries.forEach(function(country){
+	console.log(json)
+	const species = json.results;
+	const speciesFragment = document.createDocumentFragment();
+	species.forEach(function(singleSpecies){
 		const newLi=document.createElement("li");
 		const newLink=document.createElement("a");
-		newLink.textContent=country.name;
+		newLink.textContent=singleSpecies.name;
 		newLink.setAttribute("href","details.html");
-		newLink.addEventListener("click", createHandler(country), false)
+		newLink.addEventListener("click", createHandler(singleSpecies), false)
 		newLi.appendChild(newLink);
-		countriesFragment.appendChild(newLi);
+		speciesFragment.appendChild(newLi);
 	})
-	const countriesList=document.getElementById("countries-list");
-	countriesList.appendChild(countriesFragment);
+	const speciesList=document.getElementById("species-list");
+	speciesList.appendChild(speciesFragment);
 }
 
 function init(){
-	ajax("data/countries.json",populateList);
+	ajax("https://swapi.dev/api/species",populateList);
 }
 
 init();

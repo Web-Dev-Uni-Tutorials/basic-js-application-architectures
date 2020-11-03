@@ -2,5 +2,6 @@
 	"id":3,
 	"name":"Germany",
 	"capital":"Berlin",
+	"continent":"Europe",
 	"population":80000000
 }

@@ -25,6 +25,8 @@ function createHandler(country)
 		populationEl.textContent = country.population;
 		listDiv.classList.add("hide");
 		detailsDiv.classList.remove("hide");
+		//sotre the current country's details in the history object
+		history.pushState(country,null,country.id);
 	}
 }
 
@@ -43,6 +45,26 @@ function populateList(countries)
 function goBack(){
 	listDiv.classList.remove("hide");
 	detailsDiv.classList.add("hide");
+	//an an empty history entry
+	history.pushState(null,null,"./");
+}
+
+//this function will be called when the browser back/forward button is hit
+function doHistory(evnt) {
+	if(evnt.state){
+		//show a countries's details
+		let country=evnt.state
+		titleEl.textContent = country.name;
+		capitalEl.textContent = country.capital;
+		populationEl.textContent = country.population;
+		listDiv.classList.add("hide");
+		detailsDiv.classList.remove("hide");
+	}else{
+		//show the list of all the countries
+		detailsDiv.classList.add("hide");
+		listDiv.classList.remove("hide");
+	}
+
 }
 
 function init(){
@@ -59,6 +81,10 @@ function init(){
 
 	//hide the details view on page load
 	detailsDiv.classList.add("hide");
+
+	//this event will be triggered when the browser back button is hit
+	window.addEventListener('popstate', doHistory,false);
+
 	//make Ajax request
 	ajax("data/countries.json",populateList);
 }

@@ -2,5 +2,6 @@
 	"id":2,
 	"name":"France",
 	"capital":"Paris",
+	"continent":"Europe",
 	"population":65000000
 }

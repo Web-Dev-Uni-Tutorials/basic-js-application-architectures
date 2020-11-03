@@ -14,9 +14,11 @@ function populateContent(country)
 {
 	const titleEl=document.getElementById("title");
 	const capitalEl=document.getElementById("capital");
+	const continentEl=document.getElementById("continent");
 	const populationEl=document.getElementById("population");
 	titleEl.textContent = country.name;
 	capitalEl.textContent = country.capital;
+	continentEl.textContent = country.continent;
 	populationEl.textContent = country.population;
 }
 

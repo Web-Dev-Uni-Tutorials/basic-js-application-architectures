@@ -2,5 +2,6 @@
 	"id":1,
 	"name":"England",
 	"capital":"London",
+	"continent":"Europe",
 	"population":61000000
 }
