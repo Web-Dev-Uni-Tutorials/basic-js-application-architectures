@@ -1,15 +1,15 @@
-function ajax(url,callback)
+function loadData(url,callback)
 {
 	fetch(url).then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		callback(json)
 	});
-} //end of ajax()
+} //end of loadData()
 
 function populateList(countries)
 {
-	const countriesFragment = document.createDocumentFragment();
+	const countriesList=document.querySelector("#countries-list");
 	countries.forEach(function(country){
 		const newLi=document.createElement("li");
 		const newLink=document.createElement("a");
@@ -17,14 +17,12 @@ function populateList(countries)
 		//adds a querystring to the URL e.g. details.html?id=2
 		newLink.setAttribute("href","details.html?id="+country.id);
 		newLi.appendChild(newLink);
-		countriesFragment.appendChild(newLi);
+		countriesList.appendChild(newLi);
 	})
-	const countriesList=document.getElementById("countries-list");
-	countriesList.appendChild(countriesFragment);
-}
+} //end of populateList, do not remove this line
 
 function init(){
-	ajax("data/countries.json",populateList);
+	loadData("data/countries.json",populateList);
 }
 
 init();
