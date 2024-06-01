@@ -7,22 +7,23 @@ function loadData(url,callback)
 	});
 } //end of loadData()
 
-function populateList(countries)
+function populateList(vehicles)
 {
-	const countriesList=document.querySelector("#countries-list");
-	countries.forEach(function(country){
-		const newLi=document.createElement("li");
-		const newLink=document.createElement("a");
-		newLink.textContent=country.name;
+	const vehiclesList = document.querySelector("#vehicles-list");
+	vehicles.results.forEach(function (vehicle) {
+		const newLi = document.createElement("li");
+		const newLink = document.createElement("a");
+		console.log(vehicle);
+		newLink.textContent = vehicle.name;
 		//adds a querystring to the URL e.g. details.html?id=2
-		newLink.setAttribute("href","details.html?id="+country.id);
+		newLink.setAttribute("href", "details.html?id=" + vehicle.uid);
 		newLi.appendChild(newLink);
-		countriesList.appendChild(newLi);
+		vehiclesList.appendChild(newLi);
 	})
 } //end of populateList, do not remove this line
 
 function init(){
-	loadData("data/countries.json",populateList);
+	loadData("https://www.swapi.tech/api/vehicles/",populateList);
 }
 
 init();
