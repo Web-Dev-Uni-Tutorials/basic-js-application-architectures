@@ -12,7 +12,7 @@ Run the different examples (remember they need to be on a web server) and explor
   * It doesn't matter which example you use to do this.
 
 * Can you use the SWAPI API that we used last week - https://www.swapi.tech/ to load the data instead of hard-coded JSON files.
-  * You could use the web storage example and pass the URL of a species instead of the id number of a country. e.g.  https://www.swapi.tech/api/species for the first request, and then requests for specific species on the details page e.g. https://www.swapi.tech/api/species/3.
+  * You could use the web storage example and pass the URL of a vehicle instead of the id number of a country. e.g.  https://www.swapi.tech/api/vehicles for the first request, and then requests for specific species on the details page e.g. https://www.swapi.tech/api/vehicles/4.
   * Alternatively you could use the simple SPA example and just make a single request.
 
 * Can you use the history API with the SPA example so that the browser's back and forward buttons work.
