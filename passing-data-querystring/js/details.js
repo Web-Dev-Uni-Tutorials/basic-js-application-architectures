@@ -1,20 +1,20 @@
-function ajax(url,callback)
+function loadData(url,callback)
 {
 	fetch(url).then(function(response) {
 		return response.json();
 	}).then(function(json) {
 		callback(json)
 	});
-} //end of ajax()
+} //end of loadData()
 
 
 
 
 function populateContent(country)
 {
-	const titleEl=document.getElementById("title");
-	const capitalEl=document.getElementById("capital");
-	const populationEl=document.getElementById("population");
+	const titleEl=document.querySelector("#title");
+	const capitalEl=document.querySelector("#capital");
+	const populationEl=document.querySelector("#population");
 	titleEl.textContent = country.name;
 	capitalEl.textContent = country.capital;
 	populationEl.textContent = country.population;
@@ -26,7 +26,7 @@ function init(){
 	//see https://davidwalsh.name/query-string-javascript for more info
 	const urlParams = new URLSearchParams(window.location.search);
 	const id = urlParams.get("id");
-	ajax("data/country"+id+".json",populateContent); //request a JSON file e.g. country3.json
+	loadData("data/country"+id+".json",populateContent); //request a JSON file e.g. country3.json
 }
 
 
