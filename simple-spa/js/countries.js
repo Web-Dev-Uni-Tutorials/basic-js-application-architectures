@@ -32,15 +32,13 @@ function createHandler(country)
 
 function populateList(countries)
 {
-	const countriesFragment = document.createDocumentFragment();
+	const countriesList=document.querySelector("#countries-list");
 	countries.forEach(function(country){
 		const newLi=document.createElement("li");
 		newLi.textContent=country.name;
 		newLi.addEventListener("click", createHandler(country), false)
-		countriesFragment.appendChild(newLi);
+		countriesList.appendChild(newLi);
 	})
-	const countriesList=document.querySelector("#countries-list");
-	countriesList.appendChild(countriesFragment);
 }
 
 function goBack(){
@@ -51,10 +49,10 @@ function goBack(){
 }
 
 //this function will be called when the browser back/forward button is hit
-function doHistory(evnt) {
-	if(evnt.state){
+function doHistory(event) {
+	if(event.state){
 		//show a countries's details
-		let country=evnt.state
+		let country=event.state
 		titleEl.textContent = country.name;
 		capitalEl.textContent = country.capital;
 		populationEl.textContent = country.population;
