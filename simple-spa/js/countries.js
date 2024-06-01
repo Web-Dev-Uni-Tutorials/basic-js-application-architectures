@@ -1,20 +1,20 @@
-function ajax(url,callback)
+function loadData(url,callback)
 {
 	fetch(url).then(function(response) {
 		return response.json();
 	}).then(function(json) {
-		callback(json)
+		callback(json); //this calls populateList(), it's a callback function
 	});
-} //end of ajax()
+} //end of loadData()
 
 //declare globally
 //these variables need to be accessed by several different functions
 
-var listDiv; //the <div> that will hold the list of countries
-var detailsDiv; //the <div> that will hold the details elements
-var titleEl;
-var capitalEl;
-var populationEl;
+let listDiv; //the <div> that will hold the list of countries
+let detailsDiv; //the <div> that will hold the details elements
+let titleEl;
+let capitalEl;
+let populationEl;
 
 function createHandler(country)
 {
@@ -26,20 +26,21 @@ function createHandler(country)
 		listDiv.classList.add("hide");
 		detailsDiv.classList.remove("hide");
 	}
-}
+} 
 
 function populateList(countries)
 {
-	const countriesFragment = document.createDocumentFragment();
+	const countriesList=document.querySelector("#countries-list");
 	countries.forEach(function(country){
 		const newLi=document.createElement("li");
 		newLi.textContent=country.name;
 		newLi.addEventListener("click", createHandler(country), false)
-		countriesFragment.appendChild(newLi);
+		countriesList.appendChild(newLi);
 	})
-	const countriesList=document.getElementById("countries-list");
-	countriesList.appendChild(countriesFragment);
 }
+	
+	
+
 function goBack(){
 	listDiv.classList.remove("hide");
 	detailsDiv.classList.add("hide");
@@ -47,11 +48,11 @@ function goBack(){
 
 function init(){
 	//grab hold of HTML elements
-	listDiv =  document.getElementById("list");
-	detailsDiv =  document.getElementById("details");
-	titleEl = document.getElementById("title");
-	capitalEl = document.getElementById("capital");
-	populationEl = document.getElementById("population");
+	listDiv =  document.querySelector("#list");
+	detailsDiv =  document.querySelector("#details");
+	titleEl = document.querySelector("#title");
+	capitalEl = document.querySelector("#capital");
+	populationEl = document.querySelector("#population");
 	backBtn = document.querySelector("#backBtn");
 
 	//add event listener for the back button
@@ -59,8 +60,8 @@ function init(){
 
 	//hide the details view on page load
 	detailsDiv.classList.add("hide");
-	//make Ajax request
-	ajax("data/countries.json",populateList);
+	//make fetch request
+	loadData("data/countries.json",populateList);
 }
 
 init();
