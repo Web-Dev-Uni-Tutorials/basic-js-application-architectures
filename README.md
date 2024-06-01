@@ -23,7 +23,7 @@ Run the different examples (remember they need to be on a web server) and explor
 ### Using the Query String
 The example here is *passing-data-querystring*.
 
-* On page 1 an ajax request loads a list of countries stored as JSON
+* On page 1 an fetch request loads a list of countries stored as JSON
     ```javascript
         [
             {
@@ -48,11 +48,11 @@ The example here is *passing-data-querystring*.
 ```html
 <a href="details.html?id=3">Germany</a>
 ```
-* On page 2 (details.html) the id value from the query string is used to make another Ajax request.
+* On page 2 (details.html) the id value from the query string is used to make another fetch request.
     ```javascript
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
-    ajax("data/country"+id+".json",populateContent); //request a JSON file e.g. country3.json
+    loadData("data/country"+id+".json",populateContent); //request a JSON file e.g. country3.json
     ```
 * Each countries details are stored as a separate JSON files, e.g. *country3.json*.
 ```javascript
@@ -77,7 +77,7 @@ The example here is *passing-data-web-storage*.
 
 ```javascript
 const id = sessionStorage.getItem("id");
-ajax("data/country"+id+".json",populateContent); //request a JSON file e.g. country3.json
+loadData("data/country"+id+".json",populateContent); //request a JSON file e.g. country3.json
 ```
 
 ## Single Page Apps
