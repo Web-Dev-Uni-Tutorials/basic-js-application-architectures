@@ -33,7 +33,7 @@ function init(){
 	//see https://davidwalsh.name/query-string-javascript for more info
 	const urlParams = new URLSearchParams(window.location.search);
 	const id = urlParams.get("id");
-	loadData("https://www.swapi.tech/api/vehicles/"+id+".json",populateContent); //request a JSON file e.g. country3.json
+	loadData("https://www.swapi.tech/api/vehicles/"+id,populateContent);
 }
 
 
